@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+  - context: .
+    image: task
+deploy:
+  kubectl:
+    manifests:
+    - deploy/k8s-manifests/**
+profiles:
+- name: profile-local
+  build:
+    local: {}

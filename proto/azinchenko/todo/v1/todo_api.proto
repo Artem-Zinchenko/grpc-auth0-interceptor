@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package azinchenko.auth;
+
+option go_package = "azinchenko/auth;pb";
+import "azinchenko/todo/v1/task.proto";
+
+service TaskApi {
+  rpc Add(AddTaskRequest) returns (TaskResponse){}
+  rpc Archive(ArchiveRequest) returns (TaskResponse){}
+  rpc MarkDone(MarkDoneRequest) returns (TaskResponse){}
+}
+
+message AddTaskRequest {
+  Task task = 1;
+}
+
+message ArchiveRequest {
+  string id = 1;
+}
+
+message MarkDoneRequest {
+  string id = 1;
+}
+
+message TaskResponse {
+  Task task = 1;
+}

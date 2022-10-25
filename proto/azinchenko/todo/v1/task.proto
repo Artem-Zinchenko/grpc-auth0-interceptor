@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package azinchenko.auth;
+
+option go_package = "azinchenko/auth;pb";
+
+message Task {
+  string id = 1;
+  string message =2;
+}

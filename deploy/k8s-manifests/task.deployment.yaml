@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task
+  template:
+    metadata:
+      labels:
+        app: task
+    spec:
+      containers:
+        - name: server
+          image:  task:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
